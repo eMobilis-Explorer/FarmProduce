@@ -47,68 +47,62 @@ include './php/header.php';
 
 <body>
 
-    <header>
-        <div class="container nav-row header">
-            <!-- Hamburger for responsiveness -->
-            <button class="nav-toggle" aria-label="open navigation">
-                <span class="hamburger"></span>
-            </button>
-            <!-- Logo -->
-            <a href="/" class="logo">
-                <img src="./images/logo4.png" alt="Logo">
-            </a>
-            <!-- Navigation -->
-            <nav class="nav">
-                <ul class="nav_list">
-                    <!-- <li class="nav_item"><a href="" class="nav_link">Home</a></li> -->
-                    <li class="nav_item"><a href="" class="nav_link">Coming Soon</a></li>
-                    <!-- <li class="nav_item"><a href="" class="nav_link"></a></li> -->
-                    <li class="nav_item"><a href="" class="nav_link">About</a></li>
-                    <li class="nav_item"><a href="" class="nav_link">Contact Us</a></li>
-                </ul>
-            </nav>
-            <!-- Add the shopping cart count -->
+
+    <!-- Add the shopping cart count + Navbar header -->
+    <?php
+
+    require_once './php/navbarhead.php';
+    ?>
+    <div class="shopping_cart_count">
+        <a href="cart.php" class="cart_products">
+
             <?php
+
             require_once './php/shoppingcount.php';
+
+            require_once './php/navbarfooter.php';
+
             ?>
-        </div>
-    </header>
 
-    <main>
-        <!-- Shopping cart part -->
-        <div class="container">
-            <div class="cart-grid">
-                <!-- Use php function created to insert the cart components -->
-                <?php
-                // Create query to get the data stored in products
-
-                $sql = "SELECT * FROM `products` ORDER BY RAND()";
-                // Run the query on the database
-                $result = mysqli_query($conn, $sql);
-                // show the results on every instance using the addCartItem function we created
-                if ($result) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        addCartItems($row['product_name'], $row['product_price'], $row['product_image'], $row['product_seller'], $row['id']);
-                    }
-                }
-
-                // addCartItems("Green Bannanas", 50, "greenbanana.jpg", "Verdant Foods");
-                // addCartItems("Tomatoes", 70, "tomatoes.jpg", "KibiTheGreat Groceries");
-                // addCartItems("Onions", 80, "onions.jpg", "Chici Farm Produce");
-                // addCartItems("Water Melon", 60, "watermelon.jpg", "Leskim goods");
-                // addCartItems("Sweet Bannanas", 80, "sweetbanana.jpg", "Riverside Groceries");
-                // addCartItems("Mangoes", 60, "mangoes.jpg", "Kiambaa Farm");
-                // addCartItems("Pawpaw", 80, "pawpaw.jpg", "Gift Groceries");
-                // addCartItems("Oranges", 50, "oranges.jpg", "Delamare");
-                // addCartItems("Avocados", 100, "avacado.jpg", "Zimmerman Groceries");
-                // addCartItems("Carrots", 60, "carrots.jpg", "Chchi Farm produce");
-                // addCartItems("Blueberries", 60, "blueberries.jpg", "YourHealth Groceries");
+            <!-- Add the shopping cart count + Navbar header -->
 
 
-                ?>
+
+            <main>
+                <!-- Shopping cart part -->
+                <div class="container">
+                    <div class="cart-grid">
+                        <!-- Use php function created to insert the cart components -->
+                        <?php
+                        // Create query to get the data stored in products
+
+                        $sql = "SELECT * FROM `products` ORDER BY RAND()";
+                        // Run the query on the database
+                        $result = mysqli_query($conn, $sql);
+                        // show the results on every instance using the addCartItem function we created
+                        if ($result) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                addCartItems($row['product_name'], $row['product_price'], $row['product_image'], $row['product_seller'], $row['id']);
+                            }
+                        }
+
+                        // addCartItems("Green Bannanas", 50, "greenbanana.jpg", "Verdant Foods");
+                        // addCartItems("Tomatoes", 70, "tomatoes.jpg", "KibiTheGreat Groceries");
+                        // addCartItems("Onions", 80, "onions.jpg", "Chici Farm Produce");
+                        // addCartItems("Water Melon", 60, "watermelon.jpg", "Leskim goods");
+                        // addCartItems("Sweet Bannanas", 80, "sweetbanana.jpg", "Riverside Groceries");
+                        // addCartItems("Mangoes", 60, "mangoes.jpg", "Kiambaa Farm");
+                        // addCartItems("Pawpaw", 80, "pawpaw.jpg", "Gift Groceries");
+                        // addCartItems("Oranges", 50, "oranges.jpg", "Delamare");
+                        // addCartItems("Avocados", 100, "avacado.jpg", "Zimmerman Groceries");
+                        // addCartItems("Carrots", 60, "carrots.jpg", "Chchi Farm produce");
+                        // addCartItems("Blueberries", 60, "blueberries.jpg", "YourHealth Groceries");
 
 
-                <!-- <div class="shopping-cart">
+                        ?>
+
+
+                        <!-- <div class="shopping-cart">
                     <form action="index.php" method="post">
                         <div class="cart">
                             <div class="cart-img">
@@ -123,19 +117,19 @@ include './php/header.php';
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deleniti voluptatum a. Ad, eos voluptatum!
                                 </p>
                                 <!-- Price -->
-                <!-- <p class="price">KSh 90 <span>per kilogram</span></p>
+                        <!-- <p class="price">KSh 90 <span>per kilogram</span></p>
                                 <button class="add_product" type="submit" name="add">Add to Cart <i class="fa-solid fa-cart-plus"></i></button>
                             </div>
                         </div>
                     </form>
                 <!-- </div> -->
 
-            </div>
-        </div>
-    </main>
+                    </div>
+                </div>
+            </main>
 
-    <?php
+            <?php
 
-    include './php/footer.php';
+            include './php/footer.php';
 
-    ?>
+            ?>

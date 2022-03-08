@@ -33,34 +33,50 @@ function addCartItems($productname, $productprice, $productimage, $seller, $prod
 }
 
 
-function cartElement($productimage, $productname, $seller, $productprice, $productid)
+function cartElement($productimage, $productname, $productprice, $productid)
 {
     $element = "
-    <form action=\"cart.php?action=remove&id=$productid\" method=\"post\" class=\"cart-items row\">
-    <div class=\"cart-img\">
-        <img src=\"./images/$productimage\" alt=\"$productname\">
-    </div>
-    <div class=\"details\">
-        <h5>$productname</h5>
-        <div class=\"seller\">
-            <h6>Seller : <span>$seller</span></h6>
+    <form action=\"cart.php?action=remove&id=$productid\" method=\"post\" class=\"cart_items row\">
+    <div class=\"cart_i cart-item cart-column\">
+            <img class=\"cart-item-image\" src=\"./images/$productimage\" width=\"100\" height=\"100\">
+            <span class=\"cart-item-title\">$productname</span>
         </div>
-        <h5 class=\"price\">KSh $productprice per kgs</h5>
-        <button type=\"submit\" class=\"addtowish\">Add to Wishlist</button>
-        <button type=\"submit\" class=\"remove\" name=\"remove\">Remove</button>
-    </div>
-    <div class=\"addremove\">
-        <div class=\"no_product\">
-            <button type=\"button\" class=\"minus\" id=\"minus\">
-                <span class=\"material-icons-outlined\">remove</span>
-            </button>
-            <input type=\"text\" class=\"product_no\" value=\"1\">
-            <button type=\"button\" class=\"add\" id=\"add\">
-                <span class=\"material-icons-outlined\">add</span>
-            </button>
+        <span class=\"cart_p cart-price cart-column\">KSh $productprice per kg</span>
+        <div class=\"cart_q cart-quantity cart-column\">
+            <input class=\"cart-quantity-input\" type=\"number\" value=\"1\">
+            <button type=\"submit\" class=\"addtowish\">Add to Wishlist</button>
+            <button type=\"submit\" class=\"remove\" name=\"remove\">Remove</button>
         </div>
-    </div>
+        
+    
 </form>
     ";
     echo $element;
 }
+
+
+// <button class=\"btn btn-danger\" type=\"button\">REMOVE</button>
+
+// <div class=\"cart-img\">
+//         <img class=\"cart-item-image\" src=\"./images/$productimage\" alt=\"$productname\">
+//     </div>
+//     <div class=\"details\">
+//         <h5 class=\"cart-item-title\">$productname</h5>
+//         <div class=\"seller\">
+//             <h6>Seller : <span>$seller</span></h6>
+//         </div>
+//         <h5 class=\" cart-price cart-column price\">KSh $productprice per kgs</h5>
+//         <button type=\"submit\" class=\"addtowish\">Add to Wishlist</button>
+//         <button type=\"submit\" class=\"remove\" name=\"remove\">Remove</button>
+//     </div>
+//     <div class=\"addremove\">
+//         <div class=\"no_product\">
+//             <button type=\"button\" class=\"minus\" id=\"minus\">
+//                 <span class=\"material-icons-outlined\">remove</span>
+//             </button>
+//             <input type=\"number\" class=\" cart-quantity-input product_no\" value=\"1\" min=\"1\">
+//             <button type=\"button\" class=\"add\" id=\"add\">
+//                 <span class=\"material-icons-outlined\">add</span>
+//             </button>
+//         </div>
+//     </div>

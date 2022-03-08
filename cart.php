@@ -12,7 +12,7 @@ if (isset($_POST['remove'])) {
         foreach ($_SESSION['cart'] as $key => $value) {
             if ($value['product_id'] == $_GET['id']) {
                 unset($_SESSION['cart'][$key]);
-                echo "<script>alert('Product has been removed...!')</script>";
+                // echo "<script>alert('Product has been removed...!')</script>";
                 echo "<script>window.location = cart.php</script>";
             }
         }
@@ -32,44 +32,75 @@ if (isset($_POST['remove'])) {
         <div class="header container">
             <h2>Your Cart</h2>
             <!-- Add the shopping cart count -->
-            <?php
-            require_once './php/shoppingcount.php';
-            ?>
+            <div class="shopping_cart_count">
+                <a href="index.php" class="cart_products">
+                    <?php
+                    require_once './php/shoppingcount.php';
+                    ?>
+            </div>
         </div>
-    </div>
 
-    <div class="mycart_grid container">
-        <div class="my_cart">
-            <!-- Form taken to components.php -->
 
-            <?php
+        <section class="container container-cart content-section">
+            <h2 class="section-header">CART</h2>
+            <div class="cart-row">
+                <span class="cart-item cart-header cart-column">ITEM</span>
+                <span class="cart-price cart-header cart-column">PRICE</span>
+                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+            </div>
+            <div class="cart-items">
+                <?php
 
-            $total = 0;
+                $total = 0;
 
-            if (isset($_SESSION['cart'])) {
-                $product_id = array_column($_SESSION['cart'], 'product_id');
+                if (isset($_SESSION['cart'])) {
+                    $product_id = array_column($_SESSION['cart'], 'product_id');
 
-                $sql = "SELECT * FROM `products` ";
+                    $sql = "SELECT * FROM `products` ";
 
-                $result = mysqli_query($conn, $sql);
+                    $result = mysqli_query($conn, $sql);
 
-                while ($row = mysqli_fetch_assoc($result)) {
-                    foreach ($product_id as $id) {
-                        if ($row['id'] == $id) {
-                            cartElement($row['product_image'], $row['product_name'], $row['product_seller'], $row['product_price'], $row['id']);
-                            $total = $total + (int)$row['product_price'];
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        foreach ($product_id as $id) {
+                            if ($row['id'] == $id) {
+                                cartElement($row['product_image'], $row['product_name'], $row['product_price'], $row['id']);
+                                $total = $total + (int)$row['product_price'];
+                            }
                         }
                     }
+                } else {
+                    echo "<h5>Cart is empty</h5>";
                 }
-            } else {
-                echo "<h5>Cart is empty</h5>";
-            }
 
 
 
 
-            ?>
-            <!-- <form action="cart.php" method="get" class="cart-items row">
+                ?>
+            </div>
+            <div class="cart-total">
+                <?php
+
+                if (isset($_SESSION['cart'])) {
+                    $count = count($_SESSION['cart']);
+                    echo "<h5>Price ($count items)</h5>";
+                } else {
+                    echo "<h5>Price (0 items)</h5>";
+                }
+                ?>
+                <strong class="cart-total-title">Total</strong>
+                <span class="cart-total-price">KSh <?php echo $total; ?></span>
+            </div>
+            <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+        </section>
+
+
+
+        <!-- <div class="mycart_grid container">
+        <div class="my_cart"> -->
+        <!-- Form taken to components.php -->
+
+
+        <!-- <form action="cart.php" method="get" class="cart-items row">
                     <div class="cart-img">
                         <img src="./images/avacado.jpg" alt="Avocado">
                     </div>
@@ -95,8 +126,10 @@ if (isset($_POST['remove'])) {
                     </div>
                 </form> -->
 
-        </div>
-        <div class="checkout">
+        <!-- </div> -->
+
+
+        <!-- <div class="checkout">
             <div class="price-det">
                 <h6>Price details</h6>
                 <hr>
@@ -104,15 +137,7 @@ if (isset($_POST['remove'])) {
 
             <div class="price-details">
                 <div class="cont1">
-                    <?php
 
-                    if (isset($_SESSION['cart'])) {
-                        $count = count($_SESSION['cart']);
-                        echo "<h5>Price ($count items)</h5>";
-                    } else {
-                        echo "<h5>Price (0 items)</h5>";
-                    }
-                    ?>
                     <h5>Amount Payable</h5>
                 </div>
                 <div class="cont2">
@@ -122,7 +147,24 @@ if (isset($_POST['remove'])) {
 
 
         </div>
-    </div>
+    </div> -->
+
+
+
+        <footer class="footer_cart">
+            <div class="footer row container">
+                <div class="links">
+                    <a href="https://www.instagram.com/lesleykimutai/" class="footer_links"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/lesley.kimutai" class="footer_links"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/leskim/" class="footer_links"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/Leskim" class="footer_links"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linktr.ee/les_kim" class="footer_links"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <div class="footer_inc">
+                    <h3>Issagoodlife Inc &copy;2022</h3>
+                </div>
+            </div>
+        </footer>
 
 
 
@@ -133,12 +175,8 @@ if (isset($_POST['remove'])) {
 
 
 
+        <?php
 
+        include './php/footer.php';
 
-
-
-    <?php
-
-    include './php/footer.php';
-
-    ?>
+        ?>

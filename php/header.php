@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Hubballi&family=Red+Hat+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Hubballi&family=Metal+Mania&family=Red+Hat+Display:wght@700&display=swap" rel="stylesheet">
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
@@ -20,3 +20,5 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="./css/styles.css">
+
+    <script src="./js/index.js" async></script>

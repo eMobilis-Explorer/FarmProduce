@@ -1,5 +1,4 @@
     <!-- Javascript -->
-    <script src="./js/index.js"></script>
 
     </body>
 
