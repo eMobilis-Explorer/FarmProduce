@@ -1,0 +1,84 @@
+body{
+    
+}
+
+.coming-soon{
+    background: url('../images/deliveryman.jpg') repeat 0 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+    opacity: .75;
+    /* -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+  
+  -moz-animation: bg-scrolling-reverse 0.92s infinite;
+  
+  -o-animation: bg-scrolling-reverse 0.92s infinite;
+  
+  animation: bg-scrolling-reverse 0.92s infinite; */
+  /* IE 10+ */
+  /* -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear; */
+}
+
+.delivery{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+}
+
+.delivery h2{
+    color: var(--white);
+    font-family: var(--comicneue);
+    font-size: 2.5rem;
+    letter-spacing: .4rem;
+    padding: 20rem 0;
+    z-index: 300;
+
+}
+
+
+/* Animation */
+@-webkit-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+  @-moz-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+  @-o-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+  @keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+  @-webkit-keyframes bg-scrolling {
+    0% {
+      background-position: 100% 100%;
+    }
+  }
+  @-moz-keyframes bg-scrolling {
+    0% {
+      background-position: 100% 100%;
+    }
+  }
+  @-o-keyframes bg-scrolling {
+    0% {
+      background-position: 100% 100%;
+    }
+  }
+  @keyframes bg-scrolling {
+    0% {
+      background-position: 100% 100%;
+    }
+  }

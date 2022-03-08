@@ -7,6 +7,7 @@ include './php/header.php';
 ?>
 
 <title>Coming Soon</title>
+<link rel="stylesheet" href="css/soon.css">
 </head>
 
 <body>
@@ -22,6 +23,13 @@ include './php/header.php';
 
     <!-- Add the shopping cart count + Navbar header -->
 
+    <div class="coming-soon">
+        <div class="container delivery">
+            <h2>We are planing on delivering our product countrywide <br>
+                Stay in touch to be on the loop
+            </h2>
+        </div>
+    </div>
 
 
 
@@ -30,12 +38,14 @@ include './php/header.php';
 
 
 
+    <footer>
 
 
-    <?php
+        <?php
 
-    // Include footer file
+        // Include footer file
+        include './php/footerall.php';
 
-    include './php/footer.php';
+        include './php/footer.php';
 
-    ?>
+        ?>

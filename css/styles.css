@@ -770,6 +770,24 @@ header {
     } */
 }
 
+/* +FOOTER */
+footer{
+    position: absolute;
+    /* bottom: 0; */
+    width: 100%;
+    padding: 5rem;
+    background: #141E27;
+    color: var(--white);
+    margin-bottom: 0;
+    /* font-family: var(--metal); */
+}
+
+.footer_cart{
+    /* bottom: 0; */
+    padding: 2rem !important;
+}
+
+
 @media (max-width: 476px) {
     .cart-header{
         display: none;
@@ -805,24 +823,15 @@ header {
         content: 'QUANTITY';
         
     }
+
+    .footer_cart{
+        position: relative;
+    }
+    
 }
 
 /* FOOTER SECTION */
 
-footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 5rem;
-    background: #141E27;
-    color: var(--white);
-    margin-bottom: 0;
-    /* font-family: var(--metal); */
-}
-
-.footer_cart{
-    padding: 2rem !important;
-}
 
 .links a {
     padding: 0 .7rem;

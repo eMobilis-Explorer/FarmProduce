@@ -150,33 +150,11 @@ if (isset($_POST['remove'])) {
     </div> -->
 
 
-
         <footer class="footer_cart">
-            <div class="footer row container">
-                <div class="links">
-                    <a href="https://www.instagram.com/lesleykimutai/" class="footer_links"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/lesley.kimutai" class="footer_links"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.linkedin.com/in/leskim/" class="footer_links"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/Leskim" class="footer_links"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://linktr.ee/les_kim" class="footer_links"><i class="fa-brands fa-linkedin"></i></a>
-                </div>
-                <div class="footer_inc">
-                    <h3>Issagoodlife Inc &copy;2022</h3>
-                </div>
-            </div>
-        </footer>
+            <?php
 
+            include './php/footerall.php';
 
+            include './php/footer.php';
 
-
-
-
-
-
-
-
-        <?php
-
-        include './php/footer.php';
-
-        ?>
+            ?>
