@@ -1,112 +1,88 @@
 
 .coming-soon{
-    background: url('../images/deliveryman.jpg') repeat 0 0;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-    /* opacity: .75; */
-    /* -webkit-animation: bg-scrolling-reverse 0.92s infinite;
-  
-  -moz-animation: bg-scrolling-reverse 0.92s infinite;
-  
-  -o-animation: bg-scrolling-reverse 0.92s infinite;
-  
-  animation: bg-scrolling-reverse 0.92s infinite; */
-  /* IE 10+ */
-  /* -webkit-animation-timing-function: linear;
-  -moz-animation-timing-function: linear;
-  -o-animation-timing-function: linear;
-  animation-timing-function: linear; */
+    height:65vh;
+    position:relative;
+    width:100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
-.delivery{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* text-align: center; */
-}
+.coming-soon_bg{
+  width: 10000px;
+  height: 100%;
+  background: url('../images/deliveryman_bg.png');
+  background-repeat: repeat-x;
+  animation: move 30s linear infinite;
+  z-index: -100;
 
-.delivery h2{
-    color: var(--white);
-    /* color: #141E27; */
-    font-family: var(--comicneue);
-    /* font-family: var(--redhat); */
-    letter-spacing: .4rem;
-    font-size: 3.5rem;
-    padding: 10rem 0;
-    z-index: 300;
+
+}
+.delivery, .delivery_content{
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top:50%;
+  left:50%;
+  z-index: 10;
 
 }
 
-@media(min-width: 678px){
-  .coming-soon{
-    height: 85vh;
-  }
-  .delivery h2{
-    padding: 15rem 0;
-
-  }
+.delivery {
+  width: 600px;
+  height: 500px;
+  top:45%;
+  background :url('../images/deliveryman2.png');
+  background-position: center;
+  background-size: 226% auto;
+  background-repeat: no-repeat;
 }
 
-@media(min-width: 1056px){
-  .coming-soon{
-    height: 70vh;
-  }
-  .delivery h2{
-    padding: 15rem 0;
-
-  }
-}
-
-@media(max-width: 436px){
-  .delivery h2{
-    padding: 5rem 0;
-
-  }
+.delivery_content{
+  z-index: 100;
+  opacity: .7rem;
 }
 
 
+.delivery_content h2{
+  text-align: center;
+  color: var(--white);
+  font-family: var(--comicneue);
+  max-width: 797px;
+  font-size: 2.5rem;
+  margin: 0 auto;
+}
 
+@keyframes move {
+  0%{
+      background-position: -10%;
+  }
+  50%{
+      background-position: -50%;
+  }
+  100%{
+      background-position: -100%;
+  }
 
-/* Animation
-@-webkit-keyframes bg-scrolling-reverse {
-    100% {
-      background-position: 100% 100%;
-    }
+}
+
+/* 
+@media (max-width: 546px) {
+  .delivery{
+  transform: scale(1.3);
+  left: -172px;
+  top: 3px;
   }
-  @-moz-keyframes bg-scrolling-reverse {
-    100% {
-      background-position: 100% 100%;
+}
+
+@media (max-width: 534px) {
+  .delivery{
+    left: -250px;
     }
-  }
-  @-o-keyframes bg-scrolling-reverse {
-    100% {
-      background-position: 100% 100%;
+}
+
+@media (max-width: 412px) {
+  .delivery{
+  transform: scale(1);
+    left: -250px;
     }
-  }
-  @keyframes bg-scrolling-reverse {
-    100% {
-      background-position: 100% 100%;
-    }
-  }
-  @-webkit-keyframes bg-scrolling {
-    0% {
-      background-position: 100% 100%;
-    }
-  }
-  @-moz-keyframes bg-scrolling {
-    0% {
-      background-position: 100% 100%;
-    }
-  }
-  @-o-keyframes bg-scrolling {
-    0% {
-      background-position: 100% 100%;
-    }
-  }
-  @keyframes bg-scrolling {
-    0% {
-      background-position: 100% 100%;
-    }
-  } */
+} */
+
