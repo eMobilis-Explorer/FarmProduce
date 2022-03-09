@@ -62,7 +62,8 @@ include './php/header.php';
 
                     <li>
                         <a href="mailto:leskimuti@gmail.com">
-                            <input class="btn btn-submit" type="submit" value="Submit" />
+                            <button class="btn btn-submit" type="submit">Submit</button>
+                            <!-- <input class="btn btn-submit" type="submit" value="Submit" /> -->
                             <small>or press <strong>enter</strong></small>
                         </a>
 

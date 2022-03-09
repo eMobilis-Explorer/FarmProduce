@@ -27,8 +27,10 @@ include './php/header.php';
         <div class="coming-soon_bg">
         </div>
         <div class=" container delivery_content">
-            <h2>We are planing on delivering our product countrywide <br>
-                Stay in touch to be in the loop
+            <h2>We are planing on delivering our products countrywide <br>
+                Stay in touch to be in the loop<span class="material-icons-outlined">
+                    loop
+                </span>
             </h2>
         </div>
         <div class="container delivery">

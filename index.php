@@ -16,7 +16,7 @@ if (isset($_POST['add'])) {
 
         if (in_array($_POST['product_id'], $item_array_id)) {
             echo "<script>alert('Product is in cart...!')</script>";
-            echo "<script>window.location = index.php</script>";
+            // echo "<script>window.location = index.php</script>";
         } else {
             $count = count($_SESSION['cart']);
             $item_array = array(
@@ -32,7 +32,7 @@ if (isset($_POST['add'])) {
         );
 
         $_SESSION['cart'][0] = $item_array;
-        print_r($_SESSION['cart']);
+        // print_r($_SESSION['cart']);
     }
 }
 
@@ -60,49 +60,57 @@ include './php/header.php';
 
             require_once './php/shoppingcount.php';
 
-            require_once './php/navbarfooter.php';
-
             ?>
 
-            <!-- Add the shopping cart count + Navbar header -->
+            Cart
+        </a>
+    </div>
+
+    <?php
+
+    require_once './php/navbarfooter.php';
+
+    ?>
+
+    <!-- Add the shopping cart count + Navbar header -->
 
 
 
-            <main>
-                <!-- Shopping cart part -->
-                <div class="container">
-                    <div class="cart-grid">
-                        <!-- Use php function created to insert the cart components -->
-                        <?php
-                        // Create query to get the data stored in products
+    <main>
+        <!-- Shopping cart part -->
+        <div class="container">
+            <div class="cart-grid">
+                <!-- Use php function created to insert the cart components -->
+                <?php
+                // Create query to get the data stored in products
 
-                        $sql = "SELECT * FROM `products` ORDER BY RAND()";
-                        // Run the query on the database
-                        $result = mysqli_query($conn, $sql);
-                        // show the results on every instance using the addCartItem function we created
-                        if ($result) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                addCartItems($row['product_name'], $row['product_price'], $row['product_image'], $row['product_seller'], $row['id']);
-                            }
-                        }
+                $sql = "SELECT * FROM `products` ORDER BY RAND()";
+                // Run the query on the database
+                $result = mysqli_query($conn, $sql);
+                // show the results on every instance using the addCartItem function we created
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        addCartItems($row['product_name'], $row['product_price'], $row['product_image'], $row['product_seller'], $row['id']);
+                    }
+                }
 
-                        // addCartItems("Green Bannanas", 50, "greenbanana.jpg", "Verdant Foods");
-                        // addCartItems("Tomatoes", 70, "tomatoes.jpg", "KibiTheGreat Groceries");
-                        // addCartItems("Onions", 80, "onions.jpg", "Chici Farm Produce");
-                        // addCartItems("Water Melon", 60, "watermelon.jpg", "Leskim goods");
-                        // addCartItems("Sweet Bannanas", 80, "sweetbanana.jpg", "Riverside Groceries");
-                        // addCartItems("Mangoes", 60, "mangoes.jpg", "Kiambaa Farm");
-                        // addCartItems("Pawpaw", 80, "pawpaw.jpg", "Gift Groceries");
-                        // addCartItems("Oranges", 50, "oranges.jpg", "Delamare");
-                        // addCartItems("Avocados", 100, "avacado.jpg", "Zimmerman Groceries");
-                        // addCartItems("Carrots", 60, "carrots.jpg", "Chchi Farm produce");
-                        // addCartItems("Blueberries", 60, "blueberries.jpg", "YourHealth Groceries");
-
-
-                        ?>
+                // addCartItems("Green Bannanas", 50, "greenbanana.jpg", "Verdant Foods");
+                // addCartItems("Tomatoes", 70, "tomatoes.jpg", "KibiTheGreat Groceries");
+                // addCartItems("Onions", 80, "onions.jpg", "Chici Farm Produce");
+                // addCartItems("Water Melon", 60, "watermelon.jpg", "Leskim goods");
+                // addCartItems("Sweet Bannanas", 80, "sweetbanana.jpg", "Riverside Groceries");
+                // addCartItems("Mangoes", 60, "mangoes.jpg", "Kiambaa Farm");
+                // addCartItems("Pawpaw", 80, "pawpaw.jpg", "Gift Groceries");
+                // addCartItems("Oranges", 50, "oranges.jpg", "Delamare");
+                // addCartItems("Avocados", 100, "avacado.jpg", "Zimmerman Groceries");
+                // addCartItems("Carrots", 60, "carrots.jpg", "Chchi Farm produce");
+                // addCartItems("Blueberries", 60, "blueberries.jpg", "YourHealth Groceries");
 
 
-                        <!-- <div class="shopping-cart">
+                ?>
+
+
+                <!-- <div class="shopping-cart">
                     <form action="index.php" method="post">
                         <div class="cart">
                             <div class="cart-img">
@@ -117,19 +125,19 @@ include './php/header.php';
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime deleniti voluptatum a. Ad, eos voluptatum!
                                 </p>
                                 <!-- Price -->
-                        <!-- <p class="price">KSh 90 <span>per kilogram</span></p>
+                <!-- <p class="price">KSh 90 <span>per kilogram</span></p>
                                 <button class="add_product" type="submit" name="add">Add to Cart <i class="fa-solid fa-cart-plus"></i></button>
                             </div>
                         </div>
                     </form>
                 <!-- </div> -->
 
-                    </div>
-                </div>
-            </main>
+            </div>
+        </div>
+    </main>
 
-            <?php
+    <?php
 
-            include './php/footer.php';
+    include './php/footer.php';
 
-            ?>
+    ?>

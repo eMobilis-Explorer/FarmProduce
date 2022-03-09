@@ -8,6 +8,6 @@ if (isset($_SESSION['cart'])) {
     echo "<span class='cart_count' id='cart_count'>0</span>";
 }
 ?>
-Cart
-</a>
-</div>
+
+
+<!--  -->

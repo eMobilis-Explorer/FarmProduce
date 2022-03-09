@@ -1,27 +1,32 @@
-
-.coming-soon{
-    height:65vh;
-    position:relative;
-    width:100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
+.coming-soon {
+  height: 65vh;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
-.coming-soon_bg{
+
+.coming-soon_bg {
   width: 10000px;
   height: 100%;
   background: url('../images/deliveryman_bg.png');
   background-repeat: repeat-x;
+  -webkit-animation: move 30s linear infinite;
   animation: move 30s linear infinite;
   z-index: -100;
 
 
 }
-.delivery, .delivery_content{
+
+.delivery,
+.delivery_content {
   position: absolute;
-  transform: translate(-50%,-50%);
-  top:50%;
-  left:50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
   z-index: 10;
 
 }
@@ -29,20 +34,20 @@
 .delivery {
   width: 600px;
   height: 500px;
-  top:45%;
-  background :url('../images/deliveryman2.png');
+  top: 45%;
+  background: url('../images/deliveryman2.png');
   background-position: center;
   background-size: 226% auto;
   background-repeat: no-repeat;
 }
 
-.delivery_content{
+.delivery_content {
   z-index: 100;
   opacity: .7rem;
 }
 
 
-.delivery_content h2{
+.delivery_content h2 {
   text-align: center;
   color: var(--white);
   font-family: var(--comicneue);
@@ -51,38 +56,49 @@
   margin: 0 auto;
 }
 
-@keyframes move {
-  0%{
-      background-position: -10%;
-  }
-  50%{
-      background-position: -50%;
-  }
-  100%{
-      background-position: -100%;
-  }
-
-}
-
-/* 
-@media (max-width: 546px) {
-  .delivery{
-  transform: scale(1.3);
-  left: -172px;
-  top: 3px;
-  }
-}
-
-@media (max-width: 534px) {
-  .delivery{
-    left: -250px;
-    }
+.delivery_content h2 span {
+  padding-left: 1rem;
 }
 
 @media (max-width: 412px) {
-  .delivery{
-  transform: scale(1);
-    left: -250px;
-    }
-} */
+  .delivery_content h2 {
+    color: #06FF00;
+  }
 
+  .delivery {
+    background-size: 200% auto;
+    left: 53%;
+  }
+}
+
+
+@-webkit-keyframes move {
+  0% {
+    background-position: -10%;
+  }
+
+  50% {
+    background-position: -50%;
+  }
+
+  100% {
+    background-position: -100%;
+  }
+
+}
+
+
+@keyframes move {
+  0% {
+    background-position: -10%;
+  }
+
+  50% {
+    background-position: -50%;
+  }
+
+  100% {
+    background-position: -100%;
+  }
+
+}

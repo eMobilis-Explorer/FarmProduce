@@ -21,8 +21,10 @@ include './php/header.php';
 
     ?>
 
-    <!-- Add the shopping cart count + Navbar header -->
+    <!-- Add the shopping cart count + Navbar header  -->
 
+
+    <!-- Adding the about section - used a codepen -->
 
     <div class="container">
         <h2 class="about-title">About Us</h2>
@@ -83,6 +85,10 @@ include './php/header.php';
             </div>
         </div>
     </section>
+
+
+    <!-- Adding the about section - used a codepen -->
+
 
 
 

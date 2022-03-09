@@ -37,7 +37,11 @@ if (isset($_POST['remove'])) {
                     <?php
                     require_once './php/shoppingcount.php';
                     ?>
+                    Shop
+                </a>
             </div>
+
+            < </div>
         </div>
 
 
