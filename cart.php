@@ -41,70 +41,70 @@ if (isset($_POST['remove'])) {
                 </a>
             </div>
 
-            < </div>
         </div>
+    </div>
 
 
-        <section class="container container-cart content-section">
-            <h2 class="section-header">CART</h2>
-            <div class="cart-row">
-                <span class="cart-item cart-header cart-column">ITEM</span>
-                <span class="cart-price cart-header cart-column">PRICE</span>
-                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
-            </div>
-            <div class="cart-items">
-                <?php
+    <section class="container container-cart content-section">
+        <h2 class="section-header">CART</h2>
+        <div class="cart-row">
+            <span class="cart-item cart-header cart-column">ITEM</span>
+            <span class="cart-price cart-header cart-column">PRICE</span>
+            <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+        </div>
+        <div class="cart-items">
+            <?php
 
-                $total = 0;
+            $total = 0;
 
-                if (isset($_SESSION['cart'])) {
-                    $product_id = array_column($_SESSION['cart'], 'product_id');
+            if (isset($_SESSION['cart'])) {
+                $product_id = array_column($_SESSION['cart'], 'product_id');
 
-                    $sql = "SELECT * FROM `products` ";
+                $sql = "SELECT * FROM `products` ";
 
-                    $result = mysqli_query($conn, $sql);
+                $result = mysqli_query($conn, $sql);
 
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        foreach ($product_id as $id) {
-                            if ($row['id'] == $id) {
-                                cartElement($row['product_image'], $row['product_name'], $row['product_price'], $row['id']);
-                                $total = $total + (int)$row['product_price'];
-                            }
+                while ($row = mysqli_fetch_assoc($result)) {
+                    foreach ($product_id as $id) {
+                        if ($row['id'] == $id) {
+                            cartElement($row['product_image'], $row['product_name'], $row['product_price'], $row['id']);
+                            $total = $total + (int)$row['product_price'];
                         }
                     }
-                } else {
-                    echo "<h5>Cart is empty</h5>";
                 }
+            } else {
+                echo "<h5>Cart is empty</h5>";
+            }
 
 
 
 
-                ?>
-            </div>
-            <div class="cart-total">
-                <?php
+            ?>
+        </div>
+        <div class="cart-total">
+            <?php
 
-                if (isset($_SESSION['cart'])) {
-                    $count = count($_SESSION['cart']);
-                    echo "<h5>Price ($count items)</h5>";
-                } else {
-                    echo "<h5>Price (0 items)</h5>";
-                }
-                ?>
-                <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">KSh <?php echo $total; ?></span>
-            </div>
-            <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
-        </section>
+            if (isset($_SESSION['cart'])) {
+                $count = count($_SESSION['cart']);
+                echo "<h5>Price ($count items)</h5>";
+            } else {
+                echo "<h5>Price (0 items)</h5>";
+            }
+            ?>
+            <strong class="cart-total-title">Total</strong>
+            <span class="cart-total-price">KSh <?php echo $total; ?></span>
+        </div>
+        <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+    </section>
 
 
 
-        <!-- <div class="mycart_grid container">
+    <!-- <div class="mycart_grid container">
         <div class="my_cart"> -->
-        <!-- Form taken to components.php -->
+    <!-- Form taken to components.php -->
 
 
-        <!-- <form action="cart.php" method="get" class="cart-items row">
+    <!-- <form action="cart.php" method="get" class="cart-items row">
                     <div class="cart-img">
                         <img src="./images/avacado.jpg" alt="Avocado">
                     </div>
@@ -130,10 +130,10 @@ if (isset($_POST['remove'])) {
                     </div>
                 </form> -->
 
-        <!-- </div> -->
+    <!-- </div> -->
 
 
-        <!-- <div class="checkout">
+    <!-- <div class="checkout">
             <div class="price-det">
                 <h6>Price details</h6>
                 <hr>
@@ -154,11 +154,11 @@ if (isset($_POST['remove'])) {
     </div> -->
 
 
-        <footer class="footer_cart">
-            <?php
+    <footer class="footer_cart">
+        <?php
 
-            include './php/footerall.php';
+        include './php/footerall.php';
 
-            include './php/footer.php';
+        include './php/footer.php';
 
-            ?>
+        ?>
