@@ -27,7 +27,7 @@ div, textarea, input {
   padding: 0 2.5em;
 }
 .row_contact.header {
-  padding: 1.5em 2.5em;
+  padding: 3.5em 2.5em;
   border-bottom: 1px solid #ccc;
   background: url(https://images2.imgbox.com/a5/2e/m3lRbCCA_o.jpg) left -80px;
   color: #fff;
@@ -35,6 +35,7 @@ div, textarea, input {
 .row_contact.body {
   padding: .5em 2.5em 1em;
 }
+
 
 .pull-right {
   float: right;
@@ -84,6 +85,7 @@ h3 {
 }
 
 form {
+  margin: 3rem 0;
   max-width: 100%;
   display: block;
 }
@@ -181,3 +183,11 @@ form small {
     display: none;
   }
 }
+
+
+/* @media (min-width: 476px) {
+  .container-contact{
+    padding-bottom: 10rem;
+    min-height: 85vh;
+  }
+} */

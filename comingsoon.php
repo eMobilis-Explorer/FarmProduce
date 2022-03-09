@@ -26,7 +26,7 @@ include './php/header.php';
     <div class="coming-soon">
         <div class="container delivery">
             <h2>We are planing on delivering our product countrywide <br>
-                Stay in touch to be on the loop
+                Stay in touch to be in the loop
             </h2>
         </div>
     </div>
