@@ -1,5 +1,139 @@
 <?php
 
+// using PHPMailer to handle mails
+
+require __DIR__ . '/vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+// require 'path/to/composer/vendor/autoload.php';
+
+
+// PHP Validation
+
+$errors = [];
+$errorMessage = '';
+
+if (!empty($_POST)) {
+    $fname = $_POST['first_name'];
+    $lname = $_POST['last_name'];
+    $email = $_POST['email'];
+    $message = $_POST['comments'];
+
+    if (empty($fname)) {
+        $errors[] = 'First Name is empty';
+    }
+    if (empty($lname)) {
+        $errors[] = 'Last Name is empty';
+    }
+
+    if (empty($email)) {
+        $errors[] = 'Email is empty';
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = 'Email is invalid';
+    }
+
+    if (empty($message)) {
+        $errors[] = 'Message is empty';
+    }
+
+    // if (!empty($errors)) {
+    //     $allErrors = join('<br/>', $errors);
+    //     $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
+
+    // }
+
+
+    // PHP Send Message
+
+    if (empty($errors)) {
+        $toEmail = 'leskimuti@gmail.com';
+        $emailSubject = 'New email from your contact form';
+        $headers = ['From' => $email, 'Reply-To' => $email, 'Content-type' => 'text/html; charset=iso-8859-1'];
+
+        $bodyParagraphs = ["First Name: {$fname}", "Last Name: {$lname}",  "Email: {$email}", "Message:", $message];
+        $body = join(PHP_EOL, $bodyParagraphs);
+
+        if (mail($toEmail, $emailSubject, $body, $headers)) {
+            header('Location: contact.php');
+        } else {
+            $errorMessage = 'Oops, something went wrong. Please try again later';
+        }
+    } else {
+        $allErrors = join('<br/>', $errors);
+        $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
+    }
+}
+
+
+
+
+// } else {
+//     $mail = new PHPMailer();
+
+//     // specify SMTP credentials
+//     $mail->isSMTP();
+//     $mail->Host = 'smtp.sendgrid.net';
+//     $mail->SMTPAuth = true;
+//     $mail->Username = 'apikey';
+//     $mail->Password = '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';
+//     $mail->SMTPSecure = 'tls';
+//     $mail->Port = 25;
+
+//     $mail->setFrom($email, 'Mailtrap Website');
+//     $mail->addAddress('piotr@mailtrap.io', 'Me');
+//     $mail->Subject = 'New message from your website';
+
+//     // Enable HTML if needed
+//     $mail->isHTML(true);
+
+// $bodyParagraphs = ["First Name: {$fname}", "Last Name: {$lname}",  "Email: {$email}", "Message:", $message];
+
+// $to = "leskimuti@gmail.com"; // this is your Email address
+// $from = $email;
+// $subject = 'New message from your website';
+// // $subject2 = 'Copy of your submission';
+
+// $bodyParagraphs = ["First Name: {$fname}", "Last Name: {$lname}", "Email: {$email}", "Message:", nl2br($message)];
+// $body = join('<br />', $bodyParagraphs);
+
+
+// // $mail->Body = $body;
+
+// mail($to, $subject, $$body, $headers);
+// // mail($from,$subject2,$message2,$headers2); //copy of message to sender
+
+// echo $body;
+
+// if ($mail->send()){
+
+// if (mail()) {
+
+//     header('Location: thank-you.html'); // redirect to 'thank you' page
+// } else {
+//     // $errorMessage = 'Oops, something went wrong. Mailer Error: ' . $mail->ErrorInfo;
+//     $errorMessage = 'Oops, something went wrong. Mailer Error: ' . mail(error_log());
+// }
+//     }
+// }
+
+
+
+
+
+
+// PHP Validation
+
+
+
+
+
+
+
+// PHP Send Message
+
+
+
+
 // Include header file
 
 include './php/header.php';
@@ -30,7 +164,7 @@ include './php/header.php';
             <h3>Fill out the form below to learn more!</h3>
         </div>
         <div class="row_contact body">
-            <form action="#">
+            <form action="mailto:leskimuti@gmail.com" method="POST" id="contact-form">
                 <ul>
 
                     <li>
@@ -61,7 +195,7 @@ include './php/header.php';
                     </li>
 
                     <li>
-                        <a href="mailto:leskimuti@gmail.com">
+                        <a href="">
                             <button class="btn btn-submit" type="submit">Submit</button>
                             <!-- <input class="btn btn-submit" type="submit" value="Submit" /> -->
                             <small>or press <strong>enter</strong></small>
@@ -70,6 +204,13 @@ include './php/header.php';
                     </li>
 
                 </ul>
+
+                <?php
+                if (!empty($errors)) {
+                    $allErrors = join('<br/>', $errors);
+                    $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
+                }
+                ?>
             </form>
         </div>
     </div>
@@ -83,8 +224,16 @@ include './php/header.php';
     <footer class="footer_cart">
         <?php
 
+
+
         // Include footer file
         include './php/footerall.php';
+
+        ?>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+
+        <?php
 
         include './php/footer.php';
 

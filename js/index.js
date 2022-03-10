@@ -197,3 +197,41 @@ navToggle.addEventListener('click', ()=> {
     nav.classList.toggle('nav--visible');
 })
 
+const constraints = {
+    first_name: {
+        presence: { allowEmpty: false }
+    },
+    last_name: {
+        presence: { allowEmpty: false }
+    },
+    email: {
+        presence: { allowEmpty: false },
+        email: true
+    },
+    comments: {
+        presence: { allowEmpty: false }
+    }
+};
+
+const form = document.getElementById('contact-form');
+
+form.addEventListener('submit', function (event) {
+  const formValues = {
+    first_name: form.elements.first_name.value,
+    last_name: form.elements.last_name.value,
+      email: form.elements.email.value,
+      comments: form.elements.comments.value
+  };
+
+  const errors = validate(formValues, constraints);
+
+  if (errors) {
+    event.preventDefault();
+    const errorMessage = Object
+        .values(errors)
+        .map(function (fieldValues) { return fieldValues.join(', ')})
+        .join("\n");
+
+    alert(errorMessage);
+  }
+}, false);
