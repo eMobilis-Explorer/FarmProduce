@@ -1,6 +1,6 @@
 <?php
 
-// connection between php and mysql database localy
+// // connection between php and mysql database localy
 // $conn = new mysqli('localhost', 'root', '', 'farm_products');
 
 // // If not connected show error
