@@ -2,10 +2,52 @@
 
 // using PHPMailer to handle mails
 
+declare(strict_types=1);
+
 require __DIR__ . '/vendor/autoload.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\PHPMailer;
+use SendGrid\Mail\Mail;
 // require 'path/to/composer/vendor/autoload.php';
+
+
+// Using sendgrid api
+
+$email = new Mail();
+// Replace the email address and name with your verified sender
+$email->setFrom(
+    'test@example.com',
+    'Example Recipient'
+);
+$email->setSubject('Sending with Twilio SendGrid is Fun');
+// Replace the email address and name with your recipient
+$email->addTo(
+    'test@example.com',
+    'Example Sender'
+);
+$email->addContent(
+    'text/html',
+    '<strong>and fast with the PHP helper library.</strong>'
+);
+$sendgrid = new SendGrid(getenv('SENDGRID_API_KEY'));
+try {
+    $response = $sendgrid->send($email);
+    printf("Response status: %d\n\n", $response->statusCode());
+
+    $headers = array_filter($response->headers());
+    echo "Response Headers\n\n";
+    foreach ($headers as $header) {
+        echo '- ' . $header . "\n";
+    }
+} catch (Exception $e) {
+    echo 'Caught exception: ' . $e->getMessage() . "\n";
+}
+
+
+// Using sendgrid api
+
+
+
 
 
 // PHP Validation
@@ -45,23 +87,23 @@ if (!empty($_POST)) {
 
     // PHP Send Message
 
-    if (empty($errors)) {
-        $toEmail = 'leskimuti@gmail.com';
-        $emailSubject = 'New email from your contact form';
-        $headers = ['From' => $email, 'Reply-To' => $email, 'Content-type' => 'text/html; charset=iso-8859-1'];
+    // if (empty($errors)) {
+    //     $toEmail = 'leskimuti@gmail.com';
+    //     $emailSubject = 'New email from your contact form';
+    //     $headers = ['From' => $email, 'Reply-To' => $email, 'Content-type' => 'text/html; charset=iso-8859-1'];
 
-        $bodyParagraphs = ["First Name: {$fname}", "Last Name: {$lname}",  "Email: {$email}", "Message:", $message];
-        $body = join(PHP_EOL, $bodyParagraphs);
+    //     $bodyParagraphs = ["First Name: {$fname}", "Last Name: {$lname}",  "Email: {$email}", "Message:", $message];
+    //     $body = join(PHP_EOL, $bodyParagraphs);
 
-        if (mail($toEmail, $emailSubject, $body, $headers)) {
-            header('Location: contact.php');
-        } else {
-            $errorMessage = 'Oops, something went wrong. Please try again later';
-        }
-    } else {
-        $allErrors = join('<br/>', $errors);
-        $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
-    }
+    //     if (mail($toEmail, $emailSubject, $body, $headers)) {
+    //         header('Location: contact.php');
+    //     } else {
+    //         $errorMessage = 'Oops, something went wrong. Please try again later';
+    //     }
+    // } else {
+    //     $allErrors = join('<br/>', $errors);
+    //     $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
+    // }
 }
 
 
@@ -75,8 +117,8 @@ if (!empty($_POST)) {
 //     $mail->Host = 'smtp.sendgrid.net';
 //     $mail->SMTPAuth = true;
 //     $mail->Username = 'apikey';
-//     $mail->Password = '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';
-//     $mail->SMTPSecure = 'tls';
+//     $mail->Password = 'S4yiYnFdkb-MUzydKiyOHFeDFPkj0';
+//     $mail->SMTPSecure = 'ts';
 //     $mail->Port = 25;
 
 //     $mail->setFrom($email, 'Mailtrap Website');
